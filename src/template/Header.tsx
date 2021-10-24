@@ -5,7 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 //import HelpIcon from '@mui/icons-material/Help';
 import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
+//import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 //import Tab from '@mui/material/Tab';
@@ -15,10 +15,13 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { Breadcrumbs } from '@mui/material';
 import { routerPathPublic } from '../router/RouterPath';
-import { useHistory } from 'react-router';
+import {
+  Link,
+  useHistory
+} from "react-router-dom";
 import { RootState } from './../store/ConfigureStore'
-import { useSelector , useDispatch } from 'react-redux'
-import { setLoginfail , deleteUser} from './../store/reducer/User'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLoginfail, deleteUser } from './../store/reducer/User'
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
@@ -37,7 +40,7 @@ export default function Header(props: HeaderProps) {
 
   const dispatch = useDispatch()
 
-  const actionLogout = () =>{
+  const actionLogout = () => {
     dispatch(setLoginfail())
     dispatch(deleteUser())
     history.replace(routerPathPublic.Login)
@@ -65,13 +68,13 @@ export default function Header(props: HeaderProps) {
                 variant="body2"
                 sx={{
                   textDecoration: 'none',
-                  cursor : 'pointer',
+                  cursor: 'pointer',
                   color: lightColor,
                   '&:hover': {
                     color: 'common.white',
                   },
                 }}
-               
+
               >
                 Logout
               </Typography>
@@ -106,28 +109,29 @@ export default function Header(props: HeaderProps) {
               </Typography>
             </Grid>
             <Grid item>
-              <Breadcrumbs style={{color : lightColor}} aria-label="breadcrumb">
-                {breadcrumbs.map(({ active , value , link } , index) => (
-                  active  ? 
-                  <Typography key={index} color="inherit"  sx={{
-                    textDecoration: 'none',
-                    color: 'common.white'
-                  }}  >{value}</Typography>
-                  :
-                  <Link
-                  key={index}
-                  sx={{
-                    textDecoration: 'none',
-                    color: lightColor,
-                    '&:hover': {
-                      color: 'common.white',
-                    },
-                  }}
-                  underline="hover"
-                  href={link === undefined ? "/" : link}>
-                  {value}
-                </Link>
-                ))} 
+              <Breadcrumbs style={{ color: lightColor }} aria-label="breadcrumb">
+                {breadcrumbs.map(({ active, value, link }, index) => (
+                  active ?
+                    <Typography key={index} color="inherit" sx={{
+                      textDecoration: 'none',
+                      color: 'common.white'
+                    }}  >{value}</Typography>
+                    :
+                      
+                    <Link  style={{ textDecoration: 'none' }} key={index} to={link} ><Typography
+                        sx={{
+                          textDecoration: 'none',
+                          cursor: 'pointer',
+                          color: lightColor,
+                          '&:hover': {
+                            color: 'common.white',
+                          },
+                        }}
+                      >
+                        {value}
+                      </Typography></Link>
+                
+                ))}
               </Breadcrumbs>
             </Grid>
           </Grid>

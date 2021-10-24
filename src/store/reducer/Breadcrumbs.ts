@@ -2,7 +2,7 @@ import { createSlice , PayloadAction } from '@reduxjs/toolkit'
 
 export type BreadcrumbsType = {
   value : string ,
-  link? : string ,
+  link : string ,
   active :  boolean
 }
 

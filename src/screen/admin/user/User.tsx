@@ -24,7 +24,7 @@ function Pages() {
     useEffect(() => {
         dispatch(setBreadCms([
             { value : "หน้าหลัก" ,  link : routerPathProtected.Dashboard , active : false , },
-            { value : title ,  link : undefined , active : true , }
+            { value : title ,  link : "" , active : true , }
         ])) 
         dispatch(setTitle(title))
     }, [dispatch , title])

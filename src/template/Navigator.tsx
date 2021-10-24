@@ -99,11 +99,11 @@ export default function Navigator(props: DrawerProps) {
               <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
             </ListItem>
             {children.map(({ id: childId, icon, active , link }) => (
-              <Link to={link} key={childId}>
+              <Link to={link} key={childId} style={{ textDecoration: 'none' }}>
                 <ListItem disablePadding >
                   <ListItemButton selected={splitLocation.includes(link.slice(1, link.length)) ? true : false} sx={item}>
                     <ListItemIcon>{icon}</ListItemIcon>
-                    <ListItemText> {childId}</ListItemText>
+                    <ListItemText > {childId}</ListItemText>
                   </ListItemButton>
                 </ListItem>
               </Link>
